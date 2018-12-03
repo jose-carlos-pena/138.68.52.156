@@ -1,0 +1,23 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "a basic web server/client template",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jose-carlos-pena/138.68.52.156"
+  },
+  "author": "José Carlos Peña <jpena3@artic.edu>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jose-carlos-pena/138.68.52.156/issues"
+  },
+  "homepage": "https://github.com/jose-carlos-pena/138.68.52.156#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
