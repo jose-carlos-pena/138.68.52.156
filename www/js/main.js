@@ -6,12 +6,21 @@ let renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+//load 3d model
+let loader = new THREE.GLTFLoader();
+
+loader.load( '/3dmodel/goodmap.gltf', function ( gltf ) {
+    scene.add( gltf.scene );
+}, undefined, function ( error ) {
+	 console.error( error );
+} );
 
 //creating and adding a cube into the scene
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-var cube = new THREE.Mesh( geometry, material );
+let geometry = new THREE.BoxGeometry( 1, 1, 1 );
+let material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+let cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
+
 
 //moving the camera
 camera.position.z = 5;
