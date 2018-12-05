@@ -6,6 +6,10 @@ let renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+//lights
+let light = new THREE.AmbientLight( 0x404040 ); // soft white light
+scene.add( light );
+
 //load 3d model
 let loader = new THREE.GLTFLoader();
 
@@ -21,9 +25,13 @@ let material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 let cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
+//let nMaterial = new THREE.MeshNormalMaterial()
+//let plane = new THREE.
 
 //moving the camera
 camera.position.z = 5;
+camera.position.y = 1;
+
 
 //a function to render the scene
 function animate() {
