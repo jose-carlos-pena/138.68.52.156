@@ -126,6 +126,7 @@ audioLoader.load('sound/serversound.wav', function( buffer ) {
     sound.setRefDistance( 1 )
     sound.setRolloffFactor( 3 )
     sound.setMaxDistance( 10 )
+		sound.setLoop( true )
     sound.play()
 })
 
