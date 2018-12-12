@@ -77,7 +77,6 @@ scene.add( serverFront, serverShell )
 serverFront.position.z = 0.55
 
 //sparkles
-
 let geometry = new THREE.BufferGeometry()
 let vertices = []
 let sparkle1 = new THREE.TextureLoader().load( 'sprites/sparkle.png' )
@@ -115,6 +114,22 @@ for ( let i = 0; i < parameters.length; i++){
 }
 
 
+//audio
+let listener = new THREE.AudioListener()
+camera.add( listener )
+
+let sound = new THREE.PositionalAudio( listener )
+
+let audioLoader = new THREE.AudioLoader()
+audioLoader.load('sound/serversound.wav', function( buffer ) {
+    sound.setBuffer( buffer )
+    sound.setRefDistance( 1 )
+    sound.setRolloffFactor( 3 )
+    sound.setMaxDistance( 10 )
+    sound.play()
+})
+
+serverShell.add( sound )
 
 //renderer
 
