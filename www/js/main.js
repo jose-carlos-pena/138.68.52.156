@@ -57,24 +57,22 @@ controls.minDistance = 1
 controls.maxDistance = 20
 controls.maxPolarAngle = 10
 
-//server
-let serverFMap = new THREE.TextureLoader().load( '3dmodel/normals/serverfmap.png')
-let serverFTexture = new THREE.TextureLoader().load( '3dmodel/serverfront.png' )
-let serverFMaterial = new THREE.MeshStandardMaterial( {map: serverFTexture, normalMap: serverFMap} )
+//sprout
+let mtlLoader = new THREE.MTLLoader();
+mtlLoader.setTexturePath('/sprout/');
+mtlLoader.setPath('/sprout/');
+mtlLoader.load('sprout.mtl', function (sprMaterials) {
 
-let serverFGeometry = new THREE.BoxGeometry( 3, 1, 2)
-let serverFront = new THREE.Mesh( serverFGeometry, serverFMaterial )
+	sprMaterials.preload();
 
-let serverSMap = new THREE.TextureLoader().load( '3dmodel/normals/serversmap.png')
-let serverSTexture = new THREE.TextureLoader().load( '3dmodel/servershell.png' )
-let serverSMaterial = new THREE.MeshStandardMaterial( {map: serverSTexture, normalMap: serverSMap} )
-
-let serverSGeometry = new THREE.BoxGeometry( 3.1, 1.1, 3)
-let serverShell = new THREE.Mesh( serverSGeometry, serverSMaterial )
-
-scene.add( serverFront, serverShell )
-
-serverFront.position.z = 0.55
+	let objLoader = new THREE.OBJLoader();
+	objLoader.setMaterials(sprMaterials);
+	objLoader.setPath('/sprout/');
+	objLoader.load('sprout.obj', function (sprObj){
+		scene.add(sprObj);
+		sprObj.position.z = 0.55
+	});
+});
 
 //sparkles
 let geometry = new THREE.BufferGeometry()
